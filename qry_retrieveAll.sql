@@ -1,3 +1,3 @@
 -- SQLite
-SELECT one, two
-FROM products;
+SELECT *
+FROM Product;

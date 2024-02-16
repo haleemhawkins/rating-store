@@ -13,3 +13,10 @@ CREATE TABLE [User] (
     Password int,
     isAdmin bool
 );
+
+CREATE TABLE [Comment] (
+    CommentID int,
+    Content string,
+    ProductID int, 
+    UserID int
+);
