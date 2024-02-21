@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+
+  .left-section {
+    flex: 1.5; /* Adjust the flex property to control the width */
+    border: 1px solid #ccc;
+  }
+
+  .right-section {
+    flex: 2; /* Adjust the flex property to control the width */
+    border: 1px solid #ccc;
+    align-items: center;
+  }
+  .back{
+    position: absolute;
+    top: 200px;
+    left: 300px;
+  }
+  .Username, .Password {
+    width: 620px;
+    height: 40px;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the width and height */
+}
+
+/* Optional: Apply additional styling for better visual consistency */
+.Username input, .Password input {
+    width: 100%; /* Ensure the input fields take up the entire width of their parent containers */
+    height: 100%;
+    padding: 10px; /* Add padding to the input fields for better spacing */
+    border: 1px solid #ccc; /* Add a border for visual distinction */
+}
+
