@@ -5,7 +5,7 @@ This is a E-Commerce Web Application where users can view products and their fea
 Web Application is designed by: Ishika Patel, Mariusz Kowalski, Haleem Hawkins, Abdullah Alharayzeh, Ben Allen
 
 Front-End Software Used: CSS, HTML
-Back-End Software Used: mySQL
+Back-End Software Used: SQLite3, PHP
 
 Usage: 
 1. Open the index.html file in a web browser
