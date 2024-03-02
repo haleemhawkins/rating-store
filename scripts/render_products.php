@@ -4,6 +4,8 @@
         <th>ProductName</th>
         <th>ProductImg</th>
         <th>Tags</th>
+        <th>Stock</th>
+        <th>Price</th>
     </tr>
     <?php
     class MyDB extends SQLite3 {
@@ -28,6 +30,8 @@
             echo "<td>" . $row['ProductName'] . "</td>";
             echo "<td>" . $row['ProductImg'] . "</td>";
             echo "<td>" . $row['Tags'] . "</td>";
+            echo "<td>" . $row['Stock'] . "</td>";
+            echo "<td>" . "$" . $row['Price'] . "</td>";
             echo "</tr>";
         }
     }
