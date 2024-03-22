@@ -23,19 +23,18 @@
     $results = $db->query($sql);
     
     if($results) {
-        $data = array();
         while ($row = $results->fetchArray(SQLITE3_ASSOC)){
             echo "<tr>";
-            echo "<td>" . $row['ProductID'] . "</td>";
-            echo "<td>" . $row['ProductName'] . "</td>";
-            echo "<td>" . $row['ProductImg'] . "</td>";
-            echo "<td>" . $row['Tags'] . "</td>";
-            echo "<td>" . $row['Stock'] . "</td>";
-            echo "<td>" . "$" . $row['Price'] . "</td>";
+            echo "<td>" . htmlspecialchars($row['ProductID']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['ProductName']) . "</td>";
+            // Display image
+            echo "<td><img src='" . htmlspecialchars($row['ProductImg']) . "' alt='Product Image' style='width:100px;'></td>";
+            echo "<td>" . htmlspecialchars($row['Tags']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['Stock']) . "</td>";
+            echo "<td>" . "$" . htmlspecialchars($row['Price']) . "</td>";
             echo "</tr>";
         }
     }
-    //echo "Operation done successfully\n";
     $db->close();
     ?>
 </table>
