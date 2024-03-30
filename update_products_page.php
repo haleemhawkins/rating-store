@@ -27,6 +27,37 @@
 
         <input type="submit" value="Add Product">
     </form>
+
+    <?php
+    // Establish database connection
+    $db = new SQLite3('store.db');
+
+    // Prepare a query to fetch Product IDs
+    $query = "SELECT ProductID FROM Product";
+    $results = $db->query($query);
+
+    // Create an array to hold Product IDs
+    $productIDs = [];
+    while ($row = $results->fetchArray()) {
+        $productIDs[] = $row['ProductID'];
+    }
+    $db->close();
+    ?>
+    <h1>Delete Products</h1>
+    <form action="scripts/delete_products.php" method="POST">
+        <label for="ProductID">Product ID:</label><br>
+        <select id="ProductID" name="ProductID" required>
+        <?php foreach ($productIDs as $id): ?>
+            <option value="<?php echo htmlspecialchars($id); ?>">
+                <?php echo htmlspecialchars($id); ?>
+            </option>
+        <?php endforeach; ?>
+        </select><br>
+        <input type="submit" value="Delete Product">
+    </form>
+
+    <h1>All Products: </h1>
+    <?php include __DIR__ . '/scripts/render_products.php'; ?>
 </body>
 </html> 
 
