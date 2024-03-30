@@ -8,6 +8,6 @@
 <body>
     <h1>All Products: </h1>
     <?php include __DIR__ . '/scripts/render_products.php'; ?>
-    <a href="add_products_page.php">Add a new product</a>
+    <a href="update_products_page.php">Update products</a>
 </body>
 </html>
