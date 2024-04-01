@@ -1,0 +1,165 @@
+/* CSS Reset to maintain consistency across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif; /* Use the font that fits your design */
+}
+
+/* Top navigation bar */
+.container-27 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+/* Navigation links */
+.home, .about-us, .contact, .login, .create-a-free-account {
+  margin-right: 15px;
+  text-decoration: none;
+  color: black; /* Or any color you prefer */
+}
+
+/* Main content styling */
+.container-24 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.container-31, .image-1 {
+  margin-bottom: 20px;
+}
+
+.get-started, .learn-more {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: blue; /* Replace with your desired color */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Features section */
+.features, .key-features-of-rating-store, .discover-the-power-of-sentimental-analysis-and-accurate-ratings {
+  margin-top: 40px;
+  font-size: 1.5em;
+  color: black; /* Or any color you prefer */
+}
+
+.container-51 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.container-22, .container-42, .container-37, .container-39 {
+  margin: 20px;
+  text-align: center;
+}
+
+/* Pricing section */
+.pricing, .select-the-plan-that-best-fits-your-needs-and-unlock-the-power-of-sentiment-analysis {
+  margin-top: 40px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.container-38 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.container-25, .container-48, .container-47 {
+  margin: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  width: calc(33% - 40px); /* Adjust the width as necessary */
+}
+
+/* Footer */
+.logo-12, .home-13, .about-us-14, .services, .contact-15 {
+  display: inline;
+}
+
+.line-1 {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  margin: 40px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Add more specific styles as needed */
+/* ... previous styles ... */
+
+/* Pricing section with centered boxes */
+.container-38 {
+  display: flex;
+  justify-content: center; /* Centers the boxes in the middle of the screen */
+  flex-wrap: wrap;
+  gap: 20px; /* Adds space between the boxes */
+}
+
+.container-25, .container-48, .container-47 {
+  flex-basis: 300px; /* Gives a base width to each box */
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px; /* Adds space below each box */
+}
+
+/* Centering the 'PRICING' header */
+.pricing {
+  text-align: center;
+  width: 100%; /* Ensures the header is full width */
+  margin-top: 40px;
+  font-size: 1.5em;
+}
+
+/* Styling for buttons */
+.get-started, .learn-more, .continue-with-free, .continue-with-basic, .continue-with-pro {
+  display: block; /* Makes the button take up the full width of the container */
+  padding: 10px 20px;
+  border: none;
+  background-color: blue; /* Your color choice */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center; /* Center text inside the button */
+}
+
+/* Make buttons clickable by wrapping content in 'a' tags in your HTML and applying these styles */
+a.get-started, a.learn-more, a.continue-with-free, a.continue-with-basic, a.continue-with-pro {
+  color: white; /* Sets the text color */
+  margin-top: 10px; /* Adds space above the button */
+}
+
+/* You can add hover effects to your buttons for better user experience */
+a.get-started:hover, a.learn-more:hover, a.continue-with-free:hover, a.continue-with-basic:hover, a.continue-with-pro:hover {
+  background-color: darkblue; /* Darkens the button color on hover */
+}
+
+/* ... additional styles ... */
+
+/* Ensure you update your HTML to wrap the button text with 'a' tags using the class names provided above for the buttons */
