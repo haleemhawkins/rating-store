@@ -1,4 +1,3 @@
-/* CSS Reset to maintain consistency across browsers */
 * {
   margin: 0;
   padding: 0;
@@ -6,10 +5,10 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif; /* Use the font that fits your design */
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #e2e2e2, #fff8a5);
 }
 
-/* Top navigation bar */
 .container-27 {
   display: flex;
   justify-content: space-between;
@@ -19,13 +18,6 @@ body {
 
 .logo {
   font-weight: bold;
-}
-
-/* Navigation links */
-.home, .about-us, .contact, .login, .create-a-free-account {
-  margin-right: 15px;
-  text-decoration: none;
-  color: black; /* Or any color you prefer */
 }
 
 /* Main content styling */
@@ -39,16 +31,6 @@ body {
 
 .container-31, .image-1 {
   margin-bottom: 20px;
-}
-
-.get-started, .learn-more {
-  margin: 10px;
-  padding: 10px 20px;
-  border: none;
-  background-color: blue; /* Replace with your desired color */
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Features section */
@@ -137,7 +119,7 @@ body {
 }
 
 /* Styling for buttons */
-.get-started, .learn-more, .continue-with-free, .continue-with-basic, .continue-with-pro {
+.continue-with-free, .continue-with-basic, .continue-with-pro {
   display: block; /* Makes the button take up the full width of the container */
   padding: 10px 20px;
   border: none;
@@ -155,11 +137,6 @@ a.get-started, a.learn-more, a.continue-with-free, a.continue-with-basic, a.cont
   margin-top: 10px; /* Adds space above the button */
 }
 
-/* You can add hover effects to your buttons for better user experience */
 a.get-started:hover, a.learn-more:hover, a.continue-with-free:hover, a.continue-with-basic:hover, a.continue-with-pro:hover {
   background-color: darkblue; /* Darkens the button color on hover */
 }
-
-/* ... additional styles ... */
-
-/* Ensure you update your HTML to wrap the button text with 'a' tags using the class names provided above for the buttons */
