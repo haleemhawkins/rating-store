@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Establish database connection
     $db = new SQLite3('../store.db');
 
+    session_start();
+
     // First, fetch the image file path for the product
     $query = $db->prepare('SELECT ProductImg FROM Product WHERE ProductID = :id');
     $query->bindValue(':id', $ProductID, SQLITE3_INTEGER);
@@ -37,8 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the deletion was successful
     if ($result) {
         echo "Product with ID $ProductID has been deleted successfully.";
+        header('Location:../update_products_page.php');
+            exit;
     } else {
         echo "Error: Unable to delete the product.";
+        header('Location:../update_products_page.php');
+            exit;
     }
 
     // Close the database connection

@@ -6,6 +6,24 @@
 </head>
 <body>
     <h1>Add a New Product</h1>
+    <?php
+    session_start(); // Ensure the session is started
+
+    // Check if the success message is set
+    if(isset($_SESSION['success'])) {
+        // Display the success message
+        echo "<script>alert('" . addslashes(htmlspecialchars($_SESSION['success'])) . "');</script>";
+
+        // Unset the success message
+        unset($_SESSION['success']);
+    }
+    elseif(isset($_SESSION['failure'])) {
+        echo "<script>alert('" . addslashes(htmlspecialchars($_SESSION['failure'])) . "');</script>";
+
+        // Unset the success message
+        unset($_SESSION['failure']);
+    }
+    ?>
     <form action="scripts/insert_products.php" method="POST" enctype="multipart/form-data">
         <label for="ProductID">Product ID:</label><br>
         <input type="text" id="ProductID" name="ProductID" required><br>

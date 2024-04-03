@@ -9,7 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Price = $_POST['Price'];
 
     // Establish database connection
-    $db = new SQLite3('../store.db'); // Goes one level up to find store.db
+    $db = new SQLite3('../store.db');
+
+    session_start();
+    $alertMessage = '';
 
 
     // Handle Product Image File Upload
@@ -26,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $uploadOk = 1;
         } else {
             echo "File is not an image.";
+            $_SESSION['failure'] = 'File is not an image. ';
             $uploadOk = 0;
         }
     }
@@ -33,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check file size (for example, max 5MB)
     if ($_FILES["ProductImg"]["size"] > 5000000) {
         echo "Sorry, your file is too large.";
+        $_SESSION['failure'] .= 'Sorry, your file is too large. ';
         $uploadOk = 0;
     }
 
@@ -40,18 +45,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $_SESSION['failure'] .= 'Only JPG, JPEG, PNG and GIF files are allowed. ';
         $uploadOk = 0;
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
+        $_SESSION['failure'] .= 'Your file was not uploaded. ';
+        header('Location:../update_products_page.php');
+            exit;
+
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["ProductImg"]["tmp_name"], $uploadedFile)) {
             echo "The file ". htmlspecialchars( basename( $_FILES["ProductImg"]["name"])). " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
+            $_SESSION['failure'] .= 'There was an error uploading your file. ';
+            header('Location:../update_products_page.php');
+            exit;
         }
     }
 
@@ -69,8 +82,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->execute();
         if ($result) {
             echo "Product added successfully";
+            $_SESSION['success'] = 'Product added successfully!';
+            header('Location:../update_products_page.php');
+            exit;
         } else {
             echo "Error adding product: " . $db->lastErrorMsg();
+            $_SESSION['failure'] .= 'Product error!';
+            header('Location:../update_products_page.php');
+            exit;
         }
     }
 
