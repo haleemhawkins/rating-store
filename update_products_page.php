@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="./output.css" rel="stylesheet">
     <title>Add Product</title>
 </head>
 <body>
-    <h1>Add a New Product</h1>
     <?php
     session_start(); // Ensure the session is started
 
@@ -25,25 +25,25 @@
     }
     ?>
     <form action="scripts/insert_products.php" method="POST" enctype="multipart/form-data">
-        <label for="ProductID">Product ID:</label><br>
-        <input type="text" id="ProductID" name="ProductID" required><br>
+            <h2>Add a New Product</h2>
+            <label for="ProductID">Product ID:</label><br>
+                <input type="text" id="ProductID" name="ProductID" required><br>
+            <label for="ProductName">Product Name:</label><br>
+            <input type="text" id="ProductName" name="ProductName" required><br>
 
-        <label for="ProductName">Product Name:</label><br>
-        <input type="text" id="ProductName" name="ProductName" required><br>
+            <label for="ProductImg">Product Image:</label><br>
+            <input type="file" id="ProductImg" name="ProductImg" accept="image/*"><br>
 
-        <label for="ProductImg">Product Image:</label><br>
-        <input type="file" id="ProductImg" name="ProductImg" accept="image/*"><br>
+            <label for="Tags">Tags:</label><br>
+            <input type="text" id="Tags" name="Tags"><br>
 
-        <label for="Tags">Tags:</label><br>
-        <input type="text" id="Tags" name="Tags"><br>
+            <label for="Stock">Stock:</label><br>
+            <input type="number" id="Stock" name="Stock" required><br>
 
-        <label for="Stock">Stock:</label><br>
-        <input type="number" id="Stock" name="Stock" required><br>
+            <label for="Price">Price:</label><br>
+            <input type="text" id="Price" name="Price" required><br>
 
-        <label for="Price">Price:</label><br>
-        <input type="text" id="Price" name="Price" required><br>
-
-        <input type="submit" value="Add Product">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 rounded">Add Product</button>
     </form>
 
     <?php
@@ -71,7 +71,7 @@
             </option>
         <?php endforeach; ?>
         </select><br>
-        <input type="submit" value="Delete Product">
+        <button type="submit" class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 my-4 rounded">Delete Product</button>
     </form>
 
     <h1>All Products: </h1>
