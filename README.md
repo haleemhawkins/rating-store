@@ -4,7 +4,7 @@ This is a E-Commerce Web Application where users can view products and their fea
 
 Web Application is designed by: Ishika Patel, Mariusz Kowalski, Haleem Hawkins, Abdullah Alharayzeh, Ben Allen
 
-Front-End Software Used: CSS, HTML
+Front-End Software Used: CSS, Tailwind CSS, HTML
 Back-End Software Used: SQLite3, PHP
 
 Usage: 
