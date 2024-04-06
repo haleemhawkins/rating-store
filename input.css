@@ -1,3 +1,7 @@
+/* 
+    This is strictly for TailwindCSS.
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

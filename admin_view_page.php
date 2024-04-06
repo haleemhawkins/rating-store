@@ -1,29 +1,21 @@
+<!-- This is an Admin page -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link href="./output.css" rel="stylesheet">
-    <title>Add Product</title>
+    <title>Admin View Page</title>
 </head>
 <body>
-    <?php
-    session_start(); // Ensure the session is started
+<?php include './scripts/admin_controller.php'; ?>
 
-    // Check if the success message is set
-    if(isset($_SESSION['success'])) {
-        // Display the success message
-        echo "<script>alert('" . addslashes(htmlspecialchars($_SESSION['success'])) . "');</script>";
-
-        // Unset the success message
-        unset($_SESSION['success']);
-    }
-    elseif(isset($_SESSION['failure'])) {
-        echo "<script>alert('" . addslashes(htmlspecialchars($_SESSION['failure'])) . "');</script>";
-
-        // Unset the success message
-        unset($_SESSION['failure']);
-    }
-    ?>
+<!-- Displaying Session Messages -->
+<?php if ($successMessage): ?>
+    <script>alert('<?php echo addslashes(htmlspecialchars($successMessage)); ?>');</script>
+<?php elseif ($failureMessage): ?>
+    <script>alert('<?php echo addslashes(htmlspecialchars($failureMessage)); ?>');</script>
+<?php endif; ?>
     <form action="scripts/insert_products.php" method="POST" enctype="multipart/form-data">
             <h2>Add a New Product</h2>
             <label for="ProductID">Product ID:</label><br>
@@ -46,21 +38,6 @@
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 rounded">Add Product</button>
     </form>
 
-    <?php
-    // Establish database connection
-    $db = new SQLite3('store.db');
-
-    // Prepare a query to fetch Product IDs
-    $query = "SELECT ProductID FROM Product";
-    $results = $db->query($query);
-
-    // Create an array to hold Product IDs
-    $productIDs = [];
-    while ($row = $results->fetchArray()) {
-        $productIDs[] = $row['ProductID'];
-    }
-    $db->close();
-    ?>
     <h1>Delete Products</h1>
     <form action="scripts/delete_products.php" method="POST">
         <label for="ProductID">Product ID:</label><br>
@@ -75,7 +52,23 @@
     </form>
 
     <h1>All Products: </h1>
-    <?php include __DIR__ . '/scripts/render_products.php'; ?>
+    <?php include './scripts/product_controller.php'; ?>
+
+<div class="bg-white">
+    <!-- ... other HTML code ... -->
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        <?php foreach ($products as $product): ?>
+            <div>
+                <div class='aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
+                    <img src='<?php echo $product["ProductImg"]; ?>' alt='Product Image' class='h-full w-full object-cover object-center group-hover:opacity-75'>
+                </div>
+                <div class='mt-4 text-sm text-gray-700'><?php echo $product["ProductName"]; ?></div>
+                <div class='mt-4 text-sm text-gray-700'>Product id: <?php echo $product["ProductID"]; ?></div>
+                <div class='mt-1 text-lg font-medium text-gray-900'>$<?php echo $product["Price"]; ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
 </body>
 </html> 
 
