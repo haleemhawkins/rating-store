@@ -34,10 +34,22 @@ if (!function_exists('fetchProductDetails')) {
     }
 }
 
+if (!function_exists('fetchProductDetailsAndComments')) {
+    // Function to fetch a single product and its comments
+    function fetchProductDetailsAndComments($db, $productId) {
+        $details = $db->getProductDetails($productId); // Fetch product details
+        $comments = $db->getCommentsByProductId($productId); // Fetch comments for the product
+        return ['details' => $details, 'comments' => $comments];
+    }
+}
+
 // Determine which function to call based on the request
 if (isset($_GET['product_id'])) {
-    $productDetails = fetchProductDetails($db, $_GET['product_id']); // Pass $db as an argument
+    $result = fetchProductDetailsAndComments($db, $_GET['product_id']);
+    $productDetails = $result['details']; // Product details for display
+    $comments = $result['comments']; // Comments to display
 } else {
-    $products = fetchAllProducts($db); // Pass $db as an argument
+    $products = fetchAllProducts($db); // Fetch all products if no specific product id is provided
 }
+
 ?>

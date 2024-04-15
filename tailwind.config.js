@@ -4,6 +4,7 @@ module.exports = {
     './product_page.php',
     './update_products_page.php',
     './render_products.php',
+    './product_details_page.php',
     './scripts/**/*.php',
   ],
   theme: {

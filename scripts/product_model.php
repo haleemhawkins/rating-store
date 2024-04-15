@@ -42,6 +42,18 @@ class MyDB extends SQLite3 {
         }
         return $productIDs;
     }
+
+    public function getCommentsByProductId($productId) {
+        $stmt = $this->prepare('SELECT CommentID, Content FROM Comment WHERE ProductID = ?');
+        $stmt->bindValue(1, $productId, SQLITE3_INTEGER);
+        $result = $stmt->execute();
+
+        $comments = [];
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+            $comments[] = $row;
+        }
+        return $comments;
+    }
 }
 
 
