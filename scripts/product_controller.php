@@ -5,14 +5,20 @@ $db = new MyDB(); // Create an instance of MyDB
 
 if (!function_exists('fetchAllProducts')) {
     // Function to fetch all products
-    function fetchAllProducts($db) {
+    function fetchAllProducts($db, $tag = null) {
         global $db; // Use the global instance of MyDB
-        $results = $db->getAllProducts(); // Call the method on the MyDB instance
-
+        $query = "SELECT * FROM Product";
+        if ($tag !== null) {
+            $query .= " WHERE Tags = :tag";  // Assume the category field matches the tag
+        }
+        $stmt = $db->prepare($query);
+        if ($tag !== null) {
+            $stmt->bindValue(':tag', $tag, SQLITE3_TEXT);
+        }
+        $results = $stmt->execute();
         if (!$results) {
             return []; // Return an empty array or handle the error as needed
         }
-
         $products = [];
         while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
             $row['ProductImg'] = htmlspecialchars($row['ProductImg']);
@@ -22,7 +28,6 @@ if (!function_exists('fetchAllProducts')) {
             $row['ProductUrl'] = "product_details_page.php?product_id=" . $row['ProductID'];
             array_push($products, $row);
         }
-
         return $products;
     }
 }
@@ -43,13 +48,15 @@ if (!function_exists('fetchProductDetailsAndComments')) {
     }
 }
 
-// Determine which function to call based on the request
+$tag = isset($_GET['tag']) ? $_GET['tag'] : '';
 if (isset($_GET['product_id'])) {
     $result = fetchProductDetailsAndComments($db, $_GET['product_id']);
-    $productDetails = $result['details']; // Product details for display
-    $comments = $result['comments']; // Comments to display
+    $productDetails = $result['details'];
+    $comments = $result['comments'];
+} elseif (!empty($tag)) {
+    $products = fetchAllProducts($db, $tag);
 } else {
-    $products = fetchAllProducts($db); // Fetch all products if no specific product id is provided
+    $products = fetchAllProducts($db);
 }
 
 ?>
