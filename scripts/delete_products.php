@@ -39,11 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the deletion was successful
     if ($result) {
         echo "Product with ID $ProductID has been deleted successfully.";
-        header('Location:../update_products_page.php');
+        header('Location:../admin_view_page.php');
             exit;
     } else {
         echo "Error: Unable to delete the product.";
-        header('Location:../update_products_page.php');
+        header('Location:../admin_view_page.php');
             exit;
     }
 
