@@ -1,0 +1,5 @@
+{
+    "require": {
+        "otifsolutions/php-sentiment-analysis": "^1.0"
+    }
+}

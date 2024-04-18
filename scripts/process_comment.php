@@ -1,7 +1,17 @@
+/* This uses the library otifsolutions/php-sentiment-analysis.
+   More documentation can be found at: 
+   https://github.com/otifsolutions/php-sentiment-analysis
+
+*/ 
+
 <?php
-include_once 'product_model.php'; // Adjust the path as needed
+include_once 'product_model.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use OTIFSolutions\PhpSentimentAnalysis\Sentiment;
 
 $db = new MyDB();
+$sentiment = new Sentiment();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userComment'], $_POST['productId'])) {
     $comment = trim($_POST['userComment']);
@@ -9,15 +19,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userComment'], $_POST[
     $commentId = isset($_POST['commentId']) ? intval($_POST['commentId']) : NULL;
 
     if (!empty($comment)) {
+        // Analyze the sentiment of the comment
+        $result = $sentiment->analyze($comment);
+        $sentimentScore = $result['score'];
+
         if ($commentId) {
-            $stmt = $db->prepare('REPLACE INTO Comment (CommentID, Content, ProductID) VALUES (?, ?, ?)');
+            $stmt = $db->prepare('REPLACE INTO Comment (CommentID, Content, ProductID, SentimentScore) VALUES (?, ?, ?, ?)');
             $stmt->bindValue(1, $commentId, SQLITE3_INTEGER);
         } else {
-            $stmt = $db->prepare('INSERT INTO Comment (CommentID, Content, ProductID) VALUES (?, ?, ?)');
+            $stmt = $db->prepare('INSERT INTO Comment (Content, ProductID, SentimentScore) VALUES (?, ?, ?)');
         }
-        $stmt->bindValue(1, $commentId, SQLITE3_INTEGER);
-        $stmt->bindValue(2, $comment, SQLITE3_TEXT);
-        $stmt->bindValue(3, $productId, SQLITE3_INTEGER);
+        $stmt->bindValue(1, $comment, SQLITE3_TEXT);
+        $stmt->bindValue(2, $productId, SQLITE3_INTEGER);
+        $stmt->bindValue(3, $sentimentScore, SQLITE3_TEXT);
         
 
         if ($stmt->execute()) {

@@ -23,6 +23,7 @@ CREATE TABLE [Comment] (
     CommentID INTEGER PRIMARY KEY AUTOINCREMENT,
     Content TEXT,
     ProductID INTEGER,
-    UserID INTEGER
+    UserID INTEGER,
+    SentimentScore int
 );
 
