@@ -6,14 +6,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./EZ Rating_files/w3.css">
+    <style>
+        .Categories img{
+            width: 319px; 
+            height: 200px; 
+            object-fit: fill;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
-    <h1>All Products: </h1>
-    <!-- Include the PHP Controller at the beginning -->
+<!-- Navbar (sit on top) -->
+<div class="">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="index.html" class="w3-bar-item w3-button"><b>EZ</b> Rating</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#" class="w3-bar-item w3-button">Categories</a>
+      <a href="#" class="w3-bar-item w3-button">About</a>
+      <a href="./Login/LoginPage.html">
+      <button class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Log in / sign up</button>
+      </a>
+    </div>
+  </div>
+</div>
+
+        <!-- Include the PHP Controller at the beginning -->
 <?php include './scripts/product_controller.php'; ?>
 
 <div class="bg-white">
+    <h1><?= htmlspecialchars($tag) ?></h1>
     <!-- ... other HTML code ... -->
     <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
         <?php foreach ($products as $product): ?>

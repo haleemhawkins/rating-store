@@ -27,7 +27,16 @@
             <input type="file" id="ProductImg" name="ProductImg" accept="image/*"><br>
 
             <label for="Tags">Tags:</label><br>
-            <input type="text" id="Tags" name="Tags"><br>
+            <select id="Tags" name="Tags">
+                <option value="Electronics">Electronics</option>
+                <option value="office equipment">office equipment</option>
+                <option value="cosmetics">cosmetics</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Tools">Tools</option>
+                <option value="Appliances">Appliances</option>
+                <option value="Toys">Toys</option>
+            </select><br>
 
             <label for="Stock">Stock:</label><br>
             <input type="number" id="Stock" name="Stock" required><br>

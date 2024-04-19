@@ -22,8 +22,9 @@ CREATE TABLE [SentimentDatabase] (
 );
 
 CREATE TABLE [Comment] (
-    CommentID int,
-    Content string,
-    ProductID int, 
-    UserID int
+    CommentID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Content TEXT,
+    ProductID INTEGER,
+    UserID INTEGER
 );
+

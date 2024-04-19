@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($uploadOk == 0) {
         echo "Sorry, your file was not uploaded.";
         $_SESSION['failure'] .= 'Your file was not uploaded. ';
-        header('Location:../update_products_page.php');
+        header('Location:../admin_view_page.php');
             exit;
 
     // if everything is ok, try to upload file
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Sorry, there was an error uploading your file.";
             $_SESSION['failure'] .= 'There was an error uploading your file. ';
-            header('Location:../update_products_page.php');
+            header('Location:../admin_view_page.php');
             exit;
         }
     }
@@ -83,12 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result) {
             echo "Product added successfully";
             $_SESSION['success'] = 'Product added successfully!';
-            header('Location:../update_products_page.php');
+            header('Location:../admin_view_page.php');
             exit;
         } else {
             echo "Error adding product: " . $db->lastErrorMsg();
             $_SESSION['failure'] .= 'Product error!';
-            header('Location:../update_products_page.php');
+            header('Location:../admin_view_page.php');
             exit;
         }
     }
