@@ -1,0 +1,68 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(247, 245, 207);
+}
+.container{
+    text-align: center;
+}
+input{
+    height: 25px;
+    width: 250px;
+    border-radius: 10px;
+}
+.title{
+    text-align: center;
+    font-size: 30px;
+}
+.signin-div {
+    align-self: center;
+    margin-top: 40px;
+    height: 400px;
+    width: 700px;
+    background-color:white;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Add space between the children */
+}
+
+.form {
+    padding-top: 5cap;
+    padding-left: 30px;
+    align-items: center;
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    border-radius: 30px;
+
+}
+
+.signinbtn{
+    height: 50px;
+    width: 90px;
+    border-radius: 20px;
+    background-color: #fcc602;
+
+}
+.right-side {
+    background-color:#fcc602;
+    height: 400px;
+    width: 350px;
+    border-radius: 30px;
+}
+.text-right{
+    margin-top: 160px;
+}
+.signupbtn{
+    align-self: center;
+    height: 50px;
+    width: 90px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+
