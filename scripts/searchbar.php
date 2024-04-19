@@ -1,4 +1,11 @@
 <?php
+
+$name = $_POST['search'];
+echo "data received from POST method: " . $name;
+
+
+die();
+
 $search = $_GET['search'] ?? ''; 
 $db = new PDO('sqlite:/sql/store.db'); 
 
