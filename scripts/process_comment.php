@@ -36,6 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userComment'], $_POST[
 
         if ($stmt->execute()) {
             echo "Comment added/updated successfully!";
+
+             // Calculate mean sentiment score
+             $meanSentimentScore = $db->calculateMeanSentimentScore($productId);
+
+             // Update product's rating in the Product table
+             $updateStmt = $db->prepare('UPDATE Product SET Rating = ? WHERE ProductID = ?');
+             $updateStmt->bindValue(1, $meanSentimentScore, SQLITE3_TEXT);
+             $updateStmt->bindValue(2, $productId, SQLITE3_INTEGER);
+             $updateStmt->execute();
         } else {
             echo "Error adding/updating comment.";
         }

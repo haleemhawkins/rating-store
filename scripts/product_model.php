@@ -44,7 +44,7 @@ class MyDB extends SQLite3 {
     }
 
     public function getCommentsByProductId($productId) {
-        $stmt = $this->prepare('SELECT CommentID, Content FROM Comment WHERE ProductID = ?');
+        $stmt = $this->prepare('SELECT * FROM Comment WHERE ProductID = ?');
         $stmt->bindValue(1, $productId, SQLITE3_INTEGER);
         $result = $stmt->execute();
 
@@ -54,6 +54,28 @@ class MyDB extends SQLite3 {
         }
         return $comments;
     }
+
+    public function getCommentById($commentId) {
+        $stmt = $this->prepare('SELECT * FROM Comment WHERE CommentID = ?');
+        $stmt->bindValue(1, $commentId, SQLITE3_INTEGER);
+        $result = $stmt->execute();
+
+        if ($result) {
+            return $result->fetchArray(SQLITE3_ASSOC);
+        } else {
+            return false;
+        }
+    }
+
+    function calculateMeanSentimentScore($productId) {
+    
+        $stmt = $this->prepare('SELECT AVG(SentimentScore) AS MeanSentimentScore FROM Comment WHERE ProductID = ?');
+        $stmt->bindValue(1, $productId, SQLITE3_INTEGER);
+        $result = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+    
+        return $result['MeanSentimentScore'];
+    }
+    
 }
 
 

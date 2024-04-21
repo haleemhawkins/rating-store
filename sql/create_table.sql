@@ -6,11 +6,8 @@ CREATE TABLE [Product] (
     ProductImg VARBINARY(1000), 
     Tags string,
     Stock int(255),
-    Price Decimal(10,2) CHECK (Price > 0)
-    Rating CHECK 
-        (Rating IN ('A+', 'A', 'A-',
-         'B+', 'B', 'B-', 'C+', 'C',
-         'C-', 'D+', 'D', 'D-', 'F')) 
+    Price Decimal(10,2) CHECK (Price > 0),
+    Rating int
 );
 
 
