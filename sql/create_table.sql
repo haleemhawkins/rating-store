@@ -9,12 +9,6 @@ CREATE TABLE [Product] (
     Price Decimal(10,2) CHECK (Price > 0)
 );
 
-CREATE TABLE [User] (
-    UserID uint,
-    UserName string,
-    Password int,
-    isAdmin bool
-);
 
 CREATE TABLE [SentimentDatabase] (
     Keyword string,
