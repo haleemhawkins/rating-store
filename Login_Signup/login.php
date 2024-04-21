@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve POST data
     $email = $_POST['email'];
@@ -16,13 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the query returned any rows
     if ($row = $result->fetchArray(SQLITE3_ASSOC)) {
         // User authenticated successfully
-        echo '<script>
-                alert("Login successful.");
-                window.location.href = "dashboard.php"; // Redirect to dashboard
-              </script>';
+        // Redirect to home page
+        header("Location: index.html");
+        exit;
     } else {
         // Invalid credentials
-        echo '<script>alert("Invalid email or password. Please try again.");</script>';
+        echo '<script>
+                  alert("Invalid email or password. Please try again.");
+                  window.location.href = "login.html"; // Reload the login page
+              </script>';
     }
 
     // Close database connection
