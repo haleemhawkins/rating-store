@@ -43,6 +43,26 @@ class MyDB extends SQLite3 {
         return $productIDs;
     }
 
+    function fetchProductsByName($productName) {
+        $query = "SELECT * FROM Product WHERE ProductName LIKE :productName";
+        $stmt = $this->prepare($query);
+
+        $searchTerm = '%' . $productName . '%';
+        $stmt->bindValue(':productName', $searchTerm, SQLITE3_TEXT);
+
+        $result = $stmt->execute();
+
+        if ($result) {
+            $products = [];
+            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+                $products[] = $row;
+            }
+            return $products;
+        } else {
+            return ["error" => "Query failed to execute"];
+        }
+    }
+
     public function getCommentsByProductId($productId) {
         $stmt = $this->prepare('SELECT CommentID, Content FROM Comment WHERE ProductID = ?');
         $stmt->bindValue(1, $productId, SQLITE3_INTEGER);

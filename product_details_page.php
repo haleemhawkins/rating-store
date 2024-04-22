@@ -11,7 +11,7 @@
     <?php include './scripts/product_controller.php'; ?>
 
     <h1>Product Details</h1>
-    
+
     <!-- Check if product details are available -->
     <?php if (isset($productDetails) && !isset($productDetails['error'])): ?>
         <div class="product-details">
