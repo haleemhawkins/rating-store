@@ -15,6 +15,7 @@
         <a href="index.html" class="w3-bar-item w3-button"><b>EZ</b> Rating</a>
         <!-- Float links to the right. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
+        <a href="admin_view_page.php" class="w3-bar-item w3-button">Admin</a>
         <a href="#" class="w3-bar-item w3-button">Categories</a>
         <a href="#" class="w3-bar-item w3-button">About</a>
         <a href="./Login/LoginPage.html">
