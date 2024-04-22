@@ -24,7 +24,6 @@
     </div>
     </div>
 
-    <!-- Include the PHP Controller -->
     <?php include './scripts/product_controller.php'; ?>
 
     <h1>Product Details</h1>
@@ -35,7 +34,6 @@
             <img src='<?php echo $productDetails["ProductImg"]; ?>' alt='Product Image' class='product-image'>
             <h2><?php echo $productDetails["ProductName"]; ?></h2>
             <p class='price'>$<?php echo $productDetails["Price"]; ?></p>
-            <!-- Other product details can be added here -->
         </div>
     <?php else: ?>
         <!-- Display error message or 'product not found' -->
@@ -84,7 +82,7 @@
                         <p class="text-gray-800 text-lg"><?= htmlspecialchars($sentimentScoreLetter); ?></p>
                         <p class="text-gray-800 text-lg"><?= htmlspecialchars($comment['Content']); ?></p>
                         <!-- Button to delete comment -->
-                    <button onclick="deleteComment(<?= $comment['CommentID']; ?>)">Delete Comment</button>
+                        <button onclick="deleteComment(<?= $comment['CommentID']; ?>)">Delete Comment</button>
                     </li>
                 <?php endforeach; ?>
             </ul>
