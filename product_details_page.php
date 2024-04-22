@@ -56,7 +56,7 @@
             return 'No rating';
         } elseif ($rating >= 8) {
             return 'A';
-        } elseif ($rating >= 3) {
+        } elseif ($rating >= 2) {
             return 'B';
         } elseif ($rating >= 0) {
             return 'C';
