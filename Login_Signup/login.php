@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($row = $result->fetchArray(SQLITE3_ASSOC)) {
         // User authenticated successfully
         // Redirect to home page
-        header("Location: index.html");
+        header("Location: ../index.html");
         exit;
     } else {
         // Invalid credentials
