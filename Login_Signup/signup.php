@@ -5,7 +5,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $password = $_POST['password'];
 
-    // Connect to SQLite database
     $db = new SQLite3('users.db');
 
     // Check if user already exists with the provided email
@@ -32,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     window.location.href = "login.html"; // Redirect to login page
                   </script>';
         } else {
-            // Unable to sign up user
             echo '<script>alert("Unable to sign up. Please try again.");</script>';
         }
     }
