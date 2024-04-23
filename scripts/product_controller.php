@@ -48,11 +48,20 @@ if (!function_exists('fetchProductDetailsAndComments')) {
     }
 }
 
+if (!function_exists('fetchProductsByName')) {
+    // Function to fetch products by name
+    function fetchProductsByName($db, $productName) {
+        return $db->fetchProductsByName($productName);
+    }
+}
+
 $tag = isset($_GET['tag']) ? $_GET['tag'] : '';
 if (isset($_GET['product_id'])) {
     $result = fetchProductDetailsAndComments($db, $_GET['product_id']);
     $productDetails = $result['details'];
     $comments = $result['comments'];
+} elseif (isset($_GET['search'])) {
+    $products = fetchProductsByName($db, $_GET['search']);
 } elseif (!empty($tag)) {
     $products = fetchAllProducts($db, $tag);
 } else {

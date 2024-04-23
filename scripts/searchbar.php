@@ -1,12 +1,49 @@
 <?php
 
-$name = $_POST['search'];
-echo "data received from POST method: " . $name;
+include './product_controller.php';
+
+// if(isset($_GET['search'])){
+//     // $name = $_GET['search'];
+//     // echo "data received from GET method: " . $name;
+//     // echo "<pre>";
+//     // print_r($products);
+//     // echo "</pre>";
+
+// } else {
+//     echo "no data received from GET method";
+// }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <?php
+        foreach($products as $product){ ?>
+        
+            <img src='<?php echo $product["ProductImg"]; ?>' alt='Product Image' class='product-image'>
+            <h2><?php echo $product["ProductName"]; ?></h2>
+            <p class='price'>$<?php echo $product["Price"]; ?></p>
+
+        <?php }
+    ?>
+</body>
+</html>
 
 
-die();
 
-$search = $_GET['search'] ?? ''; 
+
+
+<?php
+/*
+
+include './'
+
+$search = $_GET['search'] ? '' : null; 
 $db = new PDO('sqlite:/sql/store.db'); 
 
 $query = $db->prepare("SELECT * FROM products WHERE name LIKE :search");
@@ -30,5 +67,5 @@ if ($results) {
 } else {
     echo '<p>No results found.</p>';
 }
-echo '</div>';
+echo '</div>';*/
 ?>
