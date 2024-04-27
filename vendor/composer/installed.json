@@ -1,0 +1,46 @@
+{
+    "packages": [
+        {
+            "name": "otifsolutions/php-sentiment-analysis",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/otifsolutions/php-sentiment-analysis.git",
+                "reference": "703048040539a574b5c9d4ccc7ceb2b7375c14e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/otifsolutions/php-sentiment-analysis/zipball/703048040539a574b5c9d4ccc7ceb2b7375c14e9",
+                "reference": "703048040539a574b5c9d4ccc7ceb2b7375c14e9",
+                "shasum": ""
+            },
+            "time": "2020-06-04T08:59:24+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "OTIFSolutions\\PhpSentimentAnalysis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "OTIF Solutions",
+                    "email": "contact@otif-solutions.com"
+                }
+            ],
+            "description": "Php Sentiment Analysis allows user to analyze sentiments from a text statement",
+            "support": {
+                "issues": "https://github.com/otifsolutions/php-sentiment-analysis/issues",
+                "source": "https://github.com/otifsolutions/php-sentiment-analysis/tree/master"
+            },
+            "install-path": "../otifsolutions/php-sentiment-analysis"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

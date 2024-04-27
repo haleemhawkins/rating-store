@@ -6,7 +6,8 @@ CREATE TABLE [Product] (
     ProductImg VARBINARY(1000), 
     Tags string,
     Stock int(255),
-    Price Decimal(10,2) CHECK (Price > 0)
+    Price Decimal(10,2) CHECK (Price > 0),
+    Rating int
 );
 
 
@@ -19,6 +20,7 @@ CREATE TABLE [Comment] (
     CommentID INTEGER PRIMARY KEY AUTOINCREMENT,
     Content TEXT,
     ProductID INTEGER,
-    UserID INTEGER
+    UserID INTEGER,
+    SentimentScore int
 );
 
