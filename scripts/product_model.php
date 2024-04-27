@@ -47,9 +47,9 @@ class MyDB extends SQLite3 {
         $query = "SELECT * FROM Product WHERE ProductName LIKE :productName";
         $stmt = $this->prepare($query);
 
+        $productName = preg_replace('/\s+/', '', $productName);
         $searchTerm = '%' . $productName . '%';
         $stmt->bindValue(':productName', $searchTerm, SQLITE3_TEXT);
-
         $result = $stmt->execute();
 
         if ($result) {
