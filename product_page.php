@@ -25,7 +25,7 @@
     <div class="w3-right w3-hide-small">
     <a href="admin_view_page.php" class="w3-bar-item w3-button">Admin</a>
       <a href="#" class="w3-bar-item w3-button">Categories</a>
-      <a href="#" class="w3-bar-item w3-button">About</a>
+      <a href="/AboutPage/AboutPage.html" class="w3-bar-item w3-button">About</a>
       <a href="./Login_Signup/login.html">
       <button class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Log in / sign up</button>
       </a>

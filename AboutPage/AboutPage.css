@@ -1,0 +1,85 @@
+/* General body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    background-color: #fffbcc; /* Light yellow background */
+    color: #333; /* Darker text for better contrast */
+}
+
+header nav {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover, .active {
+    background-color: #f1c40f; /* Yellow hover effect */
+}
+
+/* Main content styles */
+main {
+    width: 80%;
+    max-width: 960px; /* Maximum width for large screens */
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff; /* White background for content */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 8px; /* Rounded corners */
+}
+
+main h1, main h2 {
+    text-align: center; /* Centering headings */
+    color: #333;
+}
+
+/* List styles for team members */
+.team ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team li {
+    text-align: center; /* Centering team members' names */
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    clear: both;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 600px) {
+    header nav, main {
+        width: 100%;
+    }
+
+    header nav ul li a {
+        padding: 10px; /* Bigger touch targets for mobile */
+    }
+}
