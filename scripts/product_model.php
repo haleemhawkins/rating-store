@@ -55,7 +55,12 @@ class MyDB extends SQLite3 {
         if ($result) {
             $products = [];
             while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-                $products[] = $row;
+                $row['ProductImg'] = htmlspecialchars($row['ProductImg']);
+                $row['ProductName'] = htmlspecialchars($row['ProductName']);
+                $row['Price'] = htmlspecialchars($row['Price']);
+                $row['ProductID'] = htmlspecialchars($row['ProductID']);
+                $row['ProductUrl'] = "product_details_page.php?product_id=" . $row['ProductID'];
+                array_push($products, $row);
             }
             return $products;
         } else {

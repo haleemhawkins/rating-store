@@ -18,7 +18,6 @@ if (empty($products)) {
     echo $message ?? "Product not found!";
 } 
 else{
-    var_dump($products); 
         foreach($products as $product){ ?>
             <a href='<?php echo $product["ProductUrl"]; ?>'>
             <div class='aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
@@ -34,7 +33,12 @@ else{
 </html>
 
 <?php
-//Debugger
+//Debuggers
+
+//var_dump($products); 
+
+
+
 // if(isset($_GET['search'])){
 //     // $name = $_GET['search'];
 //     // echo "data received from GET method: " . $name;
