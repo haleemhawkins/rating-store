@@ -59,7 +59,7 @@ class MyDB extends SQLite3 {
                 $row['ProductName'] = htmlspecialchars($row['ProductName']);
                 $row['Price'] = htmlspecialchars($row['Price']);
                 $row['ProductID'] = htmlspecialchars($row['ProductID']);
-                $row['ProductUrl'] = "product_details_page.php?product_id=" . $row['ProductID'];
+                $row['ProductUrl'] = "/product_details_page.php?product_id=" . $row['ProductID'];
                 array_push($products, $row);
             }
             return $products;
