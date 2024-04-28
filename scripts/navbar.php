@@ -12,9 +12,9 @@
             <a href="../AboutPage/AboutPage.php" class="w3-bar-item w3-button">About</a>
             <?php
             if(isset($_SESSION['email'])) {
-                echo '<a href="./Login_Signup/logout.php" class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Log off</a>';
+                echo '<a href="../Login_Signup/logout.php" class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Log off</a>';
             } else {
-                echo '<a href="./Login_Signup/login.html" class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Log in / sign up</a>';
+                echo '<a href="../Login_Signup/login.html" class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Log in / sign up</a>';
             }
             ?>
         </div>
