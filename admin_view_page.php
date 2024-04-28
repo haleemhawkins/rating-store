@@ -2,8 +2,21 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-session_start(); 
+session_start();
+function isAdmin() {
+    // Check if the session variable 'isadmin' is set and equals 1
+    if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+        return true;
+    } else {
+        return false;
+    }
+  }
 
+if (!isset($_SESSION['email']) || $_SESSION['isAdmin'] != 1) {
+    // Redirect to a different page or display an error message
+    echo "Access Denied";
+    exit;
+}
 ?>
 <!-- This is an Admin page -->
 
@@ -17,26 +30,9 @@ session_start();
 </head>
 <body>
 <!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="index.php" class="w3-bar-item w3-button"><b>EZ</b> Rating</a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="admin_view_page.php" class="w3-bar-item w3-button">Admin</a>
-      <a href="#" class="w3-bar-item w3-button">Categories</a>
-      <a href="/AboutPage/AboutPage.html" class="w3-bar-item w3-button">About</a>
-      <a href="./Login_Signup/login.html">
-      <?php
-            if(isset($_SESSION['email'])) {
-                echo '<a href="./Login_Signup/logout.php" class="w3-bar-item w3-button">Log off</a>';
-            } else {
-                echo '<a href="./Login_Signup/login.html" class="w3-bar-item w3-button">Log in / sign up</a>';
-            }
-            ?>
-      </a>
-    </div>
-  </div>
-</div>
+<?php
+        include 'scripts/navbar.php';
+?>
 
 <?php include './scripts/admin_controller.php'; ?>
 
