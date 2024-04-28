@@ -19,8 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the query returned any rows
     if ($row = $result->fetchArray(SQLITE3_ASSOC)) {
         // User authenticated successfully
+        // Start a session and store user's email
+        session_start();
+        $_SESSION['email'] = $email;
+        $_SESSION['isAdmin'] = $row['isadmin'];
+
         // Redirect to home page
-        header("Location: ../index.html");
+        header("Location: ../index.php");
         exit;
     } else {
         // Invalid credentials
