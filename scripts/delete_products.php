@@ -1,8 +1,9 @@
-<!--
-    This php script is for an admin to
-    update and delete products in SQL database
--->
 <?php
+// Start output buffering to prevent headers already sent error
+ob_start();
+
+// Start the session
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve input values from form
@@ -10,8 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Establish database connection
     $db = new SQLite3('../store.db');
-
-    session_start();
 
     // First, fetch the image file path for the product
     $query = $db->prepare('SELECT ProductImg FROM Product WHERE ProductID = :id');
@@ -38,17 +37,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if the deletion was successful
     if ($result) {
-        echo "Product with ID $ProductID has been deleted successfully.";
+        // Redirect to admin view page
         header('Location:../admin_view_page.php');
-            exit;
+        exit;
     } else {
-        echo "Error: Unable to delete the product.";
-        header('Location:../admin_view_page.php');
-            exit;
+        // Redirect to admin view page with error message
+        header('Location:../admin_view_page.php?error=1');
+        exit;
     }
 
     // Close the database connection
     $db->close();
 }
 
+// Flush the output buffer and send content to the browser
+ob_end_flush();
 ?>

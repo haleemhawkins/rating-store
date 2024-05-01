@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     $alertMessage = '';
 
-
     // Handle Product Image File Upload
     $uploadDir = '../product_images/'; // Directory where images will be saved
     $uploadedFile = $uploadDir . basename($_FILES['ProductImg']['name']);
@@ -25,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_FILES["ProductImg"])) {
         $check = getimagesize($_FILES["ProductImg"]["tmp_name"]);
         if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            // echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
-            echo "File is not an image.";
+            // echo "File is not an image.";
             $_SESSION['failure'] = 'File is not an image. ';
             $uploadOk = 0;
         }
@@ -36,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check file size (for example, max 5MB)
     if ($_FILES["ProductImg"]["size"] > 5000000) {
-        echo "Sorry, your file is too large.";
+        // echo "Sorry, your file is too large.";
         $_SESSION['failure'] .= 'Sorry, your file is too large. ';
         $uploadOk = 0;
     }
@@ -44,24 +43,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $_SESSION['failure'] .= 'Only JPG, JPEG, PNG and GIF files are allowed. ';
         $uploadOk = 0;
     }
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+        // echo "Sorry, your file was not uploaded.";
         $_SESSION['failure'] .= 'Your file was not uploaded. ';
         header('Location:../admin_view_page.php');
-            exit;
+        exit;
 
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["ProductImg"]["tmp_name"], $uploadedFile)) {
-            echo "The file ". htmlspecialchars( basename( $_FILES["ProductImg"]["name"])). " has been uploaded.";
+            // echo "The file ". htmlspecialchars( basename( $_FILES["ProductImg"]["name"])). " has been uploaded.";
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            // echo "Sorry, there was an error uploading your file.";
             $_SESSION['failure'] .= 'There was an error uploading your file. ';
             header('Location:../admin_view_page.php');
             exit;
@@ -81,12 +80,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Execute and check
         $result = $stmt->execute();
         if ($result) {
-            echo "Product added successfully";
+            // echo "Product added successfully";
             $_SESSION['success'] = 'Product added successfully!';
             header('Location:../admin_view_page.php');
             exit;
         } else {
-            echo "Error adding product: " . $db->lastErrorMsg();
+            // echo "Error adding product: " . $db->lastErrorMsg();
             $_SESSION['failure'] .= 'Product error!';
             header('Location:../admin_view_page.php');
             exit;
@@ -96,5 +95,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close database connection
     $db->close();
 }
-?> 
-
+?>
