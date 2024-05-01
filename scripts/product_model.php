@@ -52,6 +52,11 @@ class MyDB extends SQLite3 {
         $stmt->bindValue(':productName', $searchTerm, SQLITE3_TEXT);
         $result = $stmt->execute();
 
+        if(empty($productName)) {
+            echo 'You have not entered search details. Please go back and try again.';
+            exit;
+        }
+
         if ($result) {
             $products = [];
             while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
