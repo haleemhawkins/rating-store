@@ -5,7 +5,7 @@
         <div class="w3-right w3-hide-small">
             <?php
             if(isAdmin()) {
-                echo '<a href="admin_view_page.php" class="w3-bar-item w3-button">Admin</a>';
+                echo '<a href="../admin_view_page.php" class="w3-bar-item w3-button">Admin</a>';
             }
             ?>
             <a href="#" class="w3-bar-item w3-button">Categories</a>

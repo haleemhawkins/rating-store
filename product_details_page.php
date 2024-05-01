@@ -30,6 +30,8 @@ function isAdmin() {
     <?php
         include 'scripts/navbar.php';
     ?>
+    <br><br><br>
+<div class="w3-content w3-padding" style="max-width:1564px">
 
     <?php include './scripts/product_controller.php'; ?>
 
@@ -38,22 +40,23 @@ function isAdmin() {
     <!-- Check if product details are available -->
     <?php if (isset($productDetails) && !isset($productDetails['error'])): ?>
         <div class="product-details">
-            <img src='<?php echo $productDetails["ProductImg"]; ?>' alt='Product Image' class='product-image'>
-            <h2><?php echo $productDetails["ProductName"]; ?></h2>
+        <h2><?php echo $productDetails["ProductName"]; ?></h2>
             <p class='price'>$<?php echo $productDetails["Price"]; ?></p>
+            <img src='<?php echo $productDetails["ProductImg"]; ?>' alt='Product Image' class='product-image' style="max-width:550px">
+            
         </div>
     <?php else: ?>
         <!-- Display error message or 'product not found' -->
         <p>Product not found or error in loading product details.</p>
     <?php endif; ?>
-    
+
     <!-- submit comment rating -->
     <form action="./scripts/process_comment.php" method="post">
     <p>Add your review here: </p>
     <textarea name="userComment"></textarea>
     <input type="hidden" name="productId" value="<?php echo $productDetails['ProductID']; ?>">
     <button type="submit">Submit Review</button>
-
+    
 
         <!-- Conditions to Display Rating Letter Grade -->
     <?php
@@ -96,6 +99,7 @@ function isAdmin() {
         <?php else: ?>
             <p class="text-gray-500">No reviews yet.</p>
         <?php endif; ?>
+    </div>
     </div>
 
     <!-- JavaScript function to handle deletion -->

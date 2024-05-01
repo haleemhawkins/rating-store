@@ -26,7 +26,7 @@ function isAdmin() {
             width: 319px;
             height: 200px;
             object-fit: fill;
-        }
+          }
     </style>
 </head>
 <body>
@@ -57,7 +57,7 @@ function isAdmin() {
   </div>
 
   <div class="img w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
+    <div class="w3-col l3 m6 w3-margin-bottom ">
       <a href="product_page.php?tag=Electronics">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding w3-hover-yellow">Electronics</div>

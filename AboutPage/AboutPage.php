@@ -19,7 +19,7 @@ function isAdmin() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Rating Store</title>
+    <title>About Us - EZ Rating</title>
     <link href="AboutPage.css" rel="stylesheet">
     <link rel="stylesheet" href="../EZ Rating_files/w3.css">
     <style>
@@ -31,18 +31,18 @@ function isAdmin() {
     </style>
   </head>
 <body>
-    <header>
+
 <!-- Navbar (sit on top) -->
 <?php
         include '../scripts/navbar.php';
 ?>
-    </header>
+<br><br>
 
     <main>
         <section class="about-section">
-            <h1>About Rating Store</h1>
+            <h1>About EZ Rating</h1>
             <p>
-                Rating Store is a dynamic E-Commerce Web Application dedicated to enhancing the online shopping experience through advanced sentiment analysis. Users can view detailed product features, leave comments, and browse through feedback from other customers. 
+                EZ Rating is a dynamic E-Commerce Web Application dedicated to enhancing the online shopping experience through advanced sentiment analysis. Users can view detailed product features, leave comments, and browse through feedback from other customers. 
             </p>
             <p>
                 At the heart of our application is a cutting-edge Sentiment Analysis for Product Rating system. This system analyzes user comments by comparing them with a database of sentiment-based keywords, each assigned a specific positivity or negativity weight. By doing so, it accurately determines and assigns ratings to products based on user sentiments, ensuring a transparent and user-focused rating system.
@@ -51,7 +51,7 @@ function isAdmin() {
                 Additionally, the application supports administrative roles, enabling admins to seamlessly add new products and keywords, thus maintaining the relevance and accuracy of our sentiment analysis engine.
             </p>
             <p>
-                Designed by a talented team of developers and designers, Rating Store aims to provide a reliable and insightful platform for both users and administrators alike.
+                Designed by a talented team of developers and designers, EZ Rating aims to provide a reliable and insightful platform for both users and administrators alike.
             </p>
             <div class="team">
                 <h2>Our Team</h2>
@@ -67,7 +67,7 @@ function isAdmin() {
     </main>
 
     <footer>
-        <p>© 2024 Rating Store. All rights reserved.</p>
+        <p>© 2024 EZ Rating. All rights reserved.</p>
     </footer>
 </body>
 </html>
