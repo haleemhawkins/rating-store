@@ -1,10 +1,10 @@
+<?php
+ob_start(); // Start output buffering
+
 /* This uses the library otifsolutions/php-sentiment-analysis.
    More documentation can be found at: 
-   https://github.com/otifsolutions/php-sentiment-analysis
+   https://github.com/otifsolutions/php-sentiment-analysis */
 
-*/ 
-
-<?php
 include_once 'product_model.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userComment'], $_POST[
         $stmt->bindValue(1, $comment, SQLITE3_TEXT);
         $stmt->bindValue(2, $productId, SQLITE3_INTEGER);
         $stmt->bindValue(3, $sentimentScore, SQLITE3_TEXT);
-        
 
         if ($stmt->execute()) {
             echo "Comment added/updated successfully!";
@@ -45,6 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userComment'], $_POST[
              $updateStmt->bindValue(1, $meanSentimentScore, SQLITE3_TEXT);
              $updateStmt->bindValue(2, $productId, SQLITE3_INTEGER);
              $updateStmt->execute();
+
+             // Redirect after all processing is done
+             header('Location: ../product_details_page.php?product_id=' . $productId);
+             exit(); // Ensure script stops executing after the redirect
         } else {
             echo "Error adding/updating comment.";
         }
@@ -55,5 +58,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userComment'], $_POST[
     echo "Invalid request.";
 }
 
-header('Location: ../product_details_page.php?product_id=' . $productId); // Adjust the redirect location as needed
+ob_end_flush(); // Flush the output buffer and turn off output buffering
 ?>

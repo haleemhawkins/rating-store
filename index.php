@@ -1,36 +1,40 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start(); 
+function isAdmin() {
+  // Check if the session variable 'isadmin' is set and equals 1
+  if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+      return true;
+  } else {
+      return false;
+  }
+}
+
+?>
+
 <!DOCTYPE html>
-
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>EZ Rating</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./EZ Rating_files/w3.css">
-<style>
-  .Categories img{
-    width: 319px; 
-    height: 200px; 
-    object-fit: fill;
-    }
-</style>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>EZ Rating</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./EZ Rating_files/w3.css">
+    <style>
+        .Categories img{
+            width: 319px;
+            height: 200px;
+            object-fit: fill;
+        }
+    </style>
 </head>
 <body>
 
 <!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="index.html" class="w3-bar-item w3-button"><b>EZ</b> Rating</a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="admin_view_page.php" class="w3-bar-item w3-button">Admin</a>
-      <a href="#" class="w3-bar-item w3-button">Categories</a>
-      <a href="AboutPage/AboutPage.html" class="w3-bar-item w3-button">About</a>
-      <a href="./Login_Signup/login.html">
-      <button class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Log in / sign up</button>
-      </a>
-    </div>
-  </div>
-</div>
+<?php
+        include 'scripts/navbar.php';
+?>
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">

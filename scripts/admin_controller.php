@@ -5,7 +5,9 @@ require_once 'product_model.php';
 $db = new MyDB(); 
 
 // Start the session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Handle session messages
 $successMessage = isset($_SESSION['success']) ? $_SESSION['success'] : '';

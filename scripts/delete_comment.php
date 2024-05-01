@@ -1,10 +1,11 @@
 <?php
 include_once 'product_model.php';
+
 // Check if the commentId is provided
 if (isset($_POST['commentId'])) {
     
-     // Establish database connection
-     $db = new MyDB();
+    // Establish database connection
+    $db = new MyDB();
     
     // Get the commentId from the POST data
     $commentId = $_POST['commentId'];
@@ -12,7 +13,6 @@ if (isset($_POST['commentId'])) {
     // Get the productId associated with the comment being deleted
     $comment = $db->getCommentById($commentId);
     $productId = $comment['ProductID'];
-
 
     // Prepare the SQL statement to delete the comment
     $stmt = $db->prepare('DELETE FROM Comment WHERE CommentID = ?');
@@ -22,7 +22,13 @@ if (isset($_POST['commentId'])) {
     if ($stmt->execute()) {
         // Recalculate mean sentiment score after comment deletion
         $meanSentimentScore = $db->calculateMeanSentimentScore($productId);
-        echo $meanSentimentScore;
+        
+        // Update product's rating in the Product table
+        $updateStmt = $db->prepare('UPDATE Product SET Rating = ? WHERE ProductID = ?');
+        $updateStmt->bindValue(1, $meanSentimentScore, SQLITE3_TEXT);
+        $updateStmt->bindValue(2, $productId, SQLITE3_INTEGER);
+        $updateStmt->execute();
+
         // Return the mean sentiment score as a response
         http_response_code(200);
         echo $meanSentimentScore;
@@ -31,7 +37,7 @@ if (isset($_POST['commentId'])) {
         http_response_code(500);
         echo "Error deleting comment.";
     }
-    } else {
+} else {
     // If commentId is not provided, return a bad request error
     http_response_code(400);
     echo "Bad request: commentId is missing.";
