@@ -32,7 +32,7 @@ function isAdmin() {
     ?>
     <br><br><br>
 <div class="w3-content w3-padding" style="max-width:1564px">
-
+<div class="w3-half">
     <?php include './scripts/product_controller.php'; ?>
 
     <h1>Product Details</h1>
@@ -49,13 +49,8 @@ function isAdmin() {
         <!-- Display error message or 'product not found' -->
         <p>Product not found or error in loading product details.</p>
     <?php endif; ?>
+</div>
 
-    <!-- submit comment rating -->
-    <form action="./scripts/process_comment.php" method="post">
-    <p>Add your review here: </p>
-    <textarea name="userComment"></textarea>
-    <input type="hidden" name="productId" value="<?php echo $productDetails['ProductID']; ?>">
-    <button type="submit">Submit Review</button>
     
 
         <!-- Conditions to Display Rating Letter Grade -->
@@ -76,23 +71,39 @@ function isAdmin() {
         }
     }
     ?>
+        <!-- Display Rating Letter Grade -->
+        <?php $ratingLetter =  getRatingLetterGrade($productDetails['Rating']); ?>
+        <h1>Overall Product Score: <span class="w3-badge "><?php echo $ratingLetter; ?></span></h1><br>
+    <!-- submit comment rating -->
+    <form action="./scripts/process_comment.php" method="post">
+    <p>Add your review here: </p><br>
+    <textarea class="w3-input w3-border w3-round-xlarge" name="userComment"  style="width: 350px;" ></textarea><br>
+    <input class="" type="hidden" name="productId" value="<?php echo $productDetails['ProductID']; ?>">
+    <p><button type="submit" class="w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge" style="width: 210.5px;" >Submit Review</button><p>
 
+<div class="w3-container">
         <!-- Display comments -->
     <div class="comments-section mt-8">
         <h3 class="text-2xl font-semibold mb-4">Reviews</h3>
-        <!-- Display Rating Letter Grade -->
-        <?php $ratingLetter = "Overall Product Score: " . getRatingLetterGrade($productDetails['Rating']); ?>
-        <h1><?php echo $ratingLetter; ?></h1><br>
+    
+
         <?php if (!empty($comments)): ?>
             <ul class=space-y-4">
                 <?php foreach ($comments as $comment): ?>
                     <li class="p-4 bg-white shadow-md rounded-lg border border-gray-200">
                         <!-- Display Sentiment Score Letter Grade -->
+                        <!-- Button to delete comment -->
+                        <?php
+if(isAdmin()) {
+    echo '<button onclick="deleteComment(' . $comment['CommentID'] . ')" class="w3-right w3-bar-item w3-button w3-black w3-hover-yellow w3-round-xxlarge">Delete Comment</button>';
+}
+?>
+
+                        
                         <?php $sentimentScoreLetter = "Review Score: " . getRatingLetterGrade($comment['SentimentScore']); ?>
                         <p class="text-gray-800 text-lg"><?= htmlspecialchars($sentimentScoreLetter); ?></p>
                         <p class="text-gray-800 text-lg"><?= htmlspecialchars($comment['Content']); ?></p>
-                        <!-- Button to delete comment -->
-                        <button onclick="deleteComment(<?= $comment['CommentID']; ?>)">Delete Comment</button>
+                        
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -101,6 +112,7 @@ function isAdmin() {
         <?php endif; ?>
     </div>
     </div>
+        </div>
 
     <!-- JavaScript function to handle deletion -->
 <script>
