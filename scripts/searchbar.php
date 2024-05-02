@@ -44,8 +44,8 @@ include './product_controller.php';
     <?php
 
 if (empty($products)) {
-    echo $message ?? "Product not found!";
-} 
+    echo str_repeat("<br>", 3) . ($message ?? "Product not found!");
+}
 else{
         foreach($products as $product){ ?>
             <a href='<?php echo $product["ProductUrl"]; ?>'>

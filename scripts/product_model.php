@@ -47,10 +47,13 @@ class MyDB extends SQLite3 {
         $query = "SELECT * FROM Product WHERE ProductName LIKE :productName";
         $stmt = $this->prepare($query);
 
-        $productName = preg_replace('/\s+/', '', $productName);
-        $searchTerm = '%' . $productName . '%';
+        // Uses prepared statements to separate the SQL query from the data values by using placeholders.
+        $productName = preg_replace('/\s+/', '', $productName); // Prepares an SQL statement for execution, 
+                                                                // where "?" is a placeholder for a parameter value / QUERY
+        $searchTerm = '%' . $productName . '%'; // Modifies the search term to exclude wildcard characters '%' to 
+                                                // match with partial strings, so it can be used for LIKE
         $stmt->bindValue(':productName', $searchTerm, SQLITE3_TEXT);
-        $result = $stmt->execute();
+        $result = $stmt->execute(); // Performs the query
 
         if(empty($productName)) {
             echo 'You have not entered search details. Please go back and try again.';
