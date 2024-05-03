@@ -42,7 +42,7 @@ function isAdmin() {
         <section class="about-section">
             <h1>About Rating Store</h1>
             <p>
-                Rating Store is a dynamic E-Commerce Web Application dedicated to enhancing the online shopping experience through advanced sentiment analysis. Users can view detailed product features, leave comments, and browse through feedback from other customers. 
+                Rating Store is a dynamic Rating Platform dedicated to enhancing the online shopping experience through advanced sentiment analysis. Users can view detailed product features, leave comments, and browse through feedback from other customers. 
             </p>
             <p>
                 At the heart of our application is a cutting-edge Sentiment Analysis for Product Rating system. This system analyzes user comments by comparing them with a database of sentiment-based keywords, each assigned a specific positivity or negativity weight. By doing so, it accurately determines and assigns ratings to products based on user sentiments, ensuring a transparent and user-focused rating system.
