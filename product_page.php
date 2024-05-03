@@ -36,6 +36,9 @@ function isAdmin() {
 <?php
         include 'scripts/navbar.php';
 ?>
+<br><br><br>
+<div class="w3-content w3-padding" style="max-width:1564px">
+
         <!-- Include the PHP Controller at the beginning -->
 <?php include './scripts/product_controller.php'; ?>
 
@@ -46,15 +49,18 @@ function isAdmin() {
         <?php foreach ($products as $product): ?>
             <div>
                 <a href='<?php echo $product["ProductUrl"]; ?>'>
+                <div class="w3-light-grey w3-margin-bottom">
                     <div class='aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
-                        <img src='<?php echo $product["ProductImg"]; ?>' alt='Product Image' class='h-full w-full object-cover object-center group-hover:opacity-75'>
+                        <img src='<?php echo $product["ProductImg"]; ?>' alt='Product Image' class='w3-hover-opacity'>
                     </div>
                     <div class='mt-4 text-sm text-gray-700'><?php echo $product["ProductName"]; ?></div>
                     <div class='mt-1 text-lg font-medium text-gray-900'>$<?php echo $product["Price"]; ?></div>
+                </div>
                 </a>
             </div>
         <?php endforeach; ?>
     </div>
+</div>
 </div>
 
 </body>
