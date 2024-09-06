@@ -8,15 +8,11 @@ Front-End Software Used: CSS, Tailwind CSS, HTML
 Back-End Software Used: SQLite3, PHP
 
 Usage: 
-1. Open the index.html file in a web browser
-2. Use login credentials to login to website
-3. Click submit to login
-4. Navigate through the website using the search bar or by clicking on category modules
+1. Install PHP server vs code extension and follow the extensions directions to serve the project from index.php
+3. Use login credentials to login to website
+4. Click submit to login
+5. Navigate through the website using the search bar or by clicking on category modules
 
-Login Fields:
+Login credentials:
 Username: Enter your full username
 Password: Enter your full password
-
-Feedback:
-If you have any complaints about the software or encounter any bugs please feel free to use the Contact Us link at the bottom of the page.
-
