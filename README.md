@@ -14,5 +14,13 @@ Usage:
 5. Navigate through the website using the search bar or by clicking on category modules
 
 Login credentials:
-Username: Enter your full username
-Password: Enter your full password
+
+- Username: 
+> `Enter your full username`
+- Password: 
+> `Enter your full password`
+
+![image](https://github.com/user-attachments/assets/e325a2c2-fcb5-421b-836f-fd5815dec866)
+![image](https://github.com/user-attachments/assets/37dd56a9-7c5f-4988-a24f-b77d2ee1e621)
+![image](https://github.com/user-attachments/assets/b0fbdc7e-a0cf-4e2a-b6a4-d49a4a695461)
+![image](https://github.com/user-attachments/assets/a56a79d3-166b-47eb-9839-5e7a374d8159)
